@@ -19,3 +19,11 @@ class TestCalculator:
     def test_should_add_two_numbers_separated_with_comma(self, calc):
         result = self.calc.add("1,2")
         assert_that(result).is_equal_to(3)
+
+    def test_should_add_more_numbers_separated_with_comma(self, calc):
+        result = self.calc.add("1,2, 3, 4    , 5, 6,7,8,9,10")
+        assert_that(result).is_equal_to(55)
+
+    def test_should_add_three_numbers_separated_with_comma_or_new_line(self, calc):
+        result = self.calc.add("1,2\n4")
+        assert_that(result).is_equal_to(7)
