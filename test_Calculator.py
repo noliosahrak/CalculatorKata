@@ -1,6 +1,7 @@
 import pytest
 from assertpy import assert_that
 from Calculator import Calculator
+from NegativeNumberException import NegativeNumberException
 
 
 class TestCalculator:
@@ -27,3 +28,6 @@ class TestCalculator:
     def test_should_add_three_numbers_separated_with_comma_or_new_line(self, calc):
         result = self.calc.add("1,2\n4")
         assert_that(result).is_equal_to(7)
+
+    def test_should_raise_exception_when_negative_number_provided(self, calc):
+        assert_that(self.calc.add).raises(NegativeNumberException).when_called_with("-1")
