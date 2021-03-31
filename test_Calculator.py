@@ -31,3 +31,7 @@ class TestCalculator:
 
     def test_should_raise_exception_when_negative_number_provided(self, calc):
         assert_that(self.calc.add).raises(NegativeNumberException).when_called_with("-1")
+
+    def test_should_include_all_negative_numbers_in_exception_message(self, calc):
+        assert_that(self.calc.add).raises(NegativeNumberException).when_called_with("-1,-2") \
+            .is_equal_to("Negatives: -1 -2")
